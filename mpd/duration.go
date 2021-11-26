@@ -54,13 +54,15 @@ func (d *Duration) String() string {
 	if u < uint64(time.Second) {
 		// Special case: if duration is smaller than a second,
 		// use smaller units, like 1.2ms
-		var prec int
+		//var prec int
 		w--
 		buf[w] = 'S'
 		w--
 		if u == 0 {
 			return "PT0S"
 		}
+		t := time.Duration(*d)
+		return fmt.Sprintf("PT%vS", t.Seconds())
 		/*
 			switch {
 			case u < uint64(Millisecond):
@@ -75,8 +77,8 @@ func (d *Duration) String() string {
 				buf[w] = 'm'
 			}
 		*/
-		w, u = fmtFrac(buf[:w], u, prec)
-		w = fmtInt(buf[:w], u)
+		// w, u = fmtFrac(buf[:w], u, prec)
+		// w = fmtInt(buf[:w], u)
 	} else {
 		w--
 		buf[w] = 'S'

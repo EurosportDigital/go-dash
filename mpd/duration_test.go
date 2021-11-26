@@ -13,6 +13,7 @@ func TestDuration(t *testing.T) {
 		"0s":    "PT0S",
 		"6m16s": "PT6M16S",
 		"1.97s": "PT1.97S",
+		"0.960s": "PT0.96S",
 	}
 	for ins, ex := range in {
 		timeDur, err := time.ParseDuration(ins)
